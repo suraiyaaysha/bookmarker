@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('bookmark_tag', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('bookmark_id')->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('tag_id')->index()->constrained()->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
