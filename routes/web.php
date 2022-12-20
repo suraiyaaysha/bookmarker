@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::view('/', 'welcome')->name('home');
 
 // Route::get('/dashboard', function () {
@@ -33,5 +33,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::post(
+    'bookmarks',
+    App\Http\Controllers\Bookmarks\StoreController::class,
+)->middleware(['auth'])->name('bookmarks.store');
 
 require __DIR__.'/auth.php';
