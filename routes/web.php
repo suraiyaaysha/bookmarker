@@ -39,4 +39,14 @@ Route::post(
     App\Http\Controllers\Bookmarks\StoreController::class,
 )->middleware(['auth'])->name('bookmarks.store');
 
+Route::delete(
+    'bookmarks/{bookmark}',
+    App\Http\Controllers\Bookmarks\DeleteController::class,
+)->middleware(['auth'])->name('bookmarks.delete');
+
+Route::get(
+    'bookmarks/{bookmark}',
+    App\Http\Controllers\Bookmarks\RedirectController::class
+)->middleware(['auth'])->name('bookmarks.redirect');
+
 require __DIR__.'/auth.php';
